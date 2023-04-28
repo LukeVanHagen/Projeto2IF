@@ -9,8 +9,8 @@
             <x-input-error :messages="$errors->get('name')" class="mt-2" />
         </div>
 
-         <!-- Type -->
-         <div class="mt-4">
+        <!-- Type -->
+        <div class="mt-4">
             <x-input-label for="type" :value="__('Type')" />
             <select name="type" id="type">
                 <option>Profissional</option>
