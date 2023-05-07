@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ConsultController1;
+use App\Http\Controllers\ConsultsController1;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +30,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/profissional/cadastro-disponibilidade', function () {
+    if(Auth::user()->type == "Profissional"){
+        return view('profissional.cadastroDisponibilidade');
+    } else {
+        return redirect()->route('dashboard')->with('msg', 'Acesso Negado!');
+    }
+})->name('cadastro-disponibilidade');
+
+Route::post('/consult', [ConsultsController1::class, 'store'])->name('consult.store');
+
 require __DIR__.'/auth.php';
+
