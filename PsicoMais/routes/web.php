@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ConsultsController1;
+use App\Http\Controllers\ConsultController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,7 +37,7 @@ Route::get('/profissional/cadastro-disponibilidade', function () {
     }
 })->name('cadastro-disponibilidade');
 
-Route::post('/consult', [ConsultsController1::class, 'store'])->name('consult.store');
+Route::post('/consult', [ConsultController::class, 'store'])->name('consult.store');
 
 require __DIR__.'/auth.php';
 

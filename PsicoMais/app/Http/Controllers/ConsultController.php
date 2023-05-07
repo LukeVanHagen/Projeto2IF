@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
-class ConsultsController1 extends Controller
+class ConsultController extends Controller
 {
     public function store(Request $request)
     {
