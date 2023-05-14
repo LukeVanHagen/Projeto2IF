@@ -11,17 +11,15 @@
             <form action="{{ route('consult.store') }}" method="POST">
                 @csrf
                 <label for="day">Estarei disponível em: </label>
-                <input type="number" name="day" id="day" min="1" max="31" placeholder="dia" required>
-                <input type="number" name="month" id="month" min="1" max="12" placeholder="mês" required>
-                <input type="number" name="year" id="year" min="2023" max="2099" placeholder="ano" required>
-                <input type="number" name="hours" id="hours" min="0" max="23" placeholder="hora" required>
-                <input type="number" name="minutes" id="minutes"  min="0"max="59" placeholder="minuto" required>
+                <input type="date" name="date" id="date" value="{{ $dataAtual }}" required>
+                <label for="hour">ás: </label>
+                <input type="time" id="time" name="time" value="12:00" required>
                 <p><label for="period">Durante</label>
                 <input type="number" name="period" id="period" min="1" max="24" placeholder="00" required>
                 <label for="period">Horas</label></p>
                 <x-primary-button class="ml-4">
                 {{ __('Enviar') }}
-            </x-primary-button>
+                 </x-primary-button>
             </form>
             </div>
         </div>

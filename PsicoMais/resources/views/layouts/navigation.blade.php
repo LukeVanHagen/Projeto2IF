@@ -20,6 +20,11 @@
                             {{ __('Disponibilidade') }}
                         </x-nav-link>
                     @endif
+                    @if(Auth::check() && Auth::user()->type == 'Paciente')
+                        <x-nav-link :href="route('consult.list')" :active="request()->routeIs('consult.list')">
+                            {{ __('Consultas') }}
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 

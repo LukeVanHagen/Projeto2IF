@@ -4,6 +4,7 @@ use App\Http\Controllers\ConsultController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,15 +30,10 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/profissional/cadastro-disponibilidade', function () {
-    if(Auth::user()->type == "Profissional"){
-        return view('profissional.cadastroDisponibilidade');
-    } else {
-        return redirect()->route('dashboard')->with('msg', 'Acesso Negado!');
-    }
-})->name('cadastro-disponibilidade');
 
+
+Route::get('/profissional/cadastro-disponibilidade', [ConsultController::class, 'createAvailability'])->name('cadastro-disponibilidade');
+Route::get('/lista-disponibilidades', [ConsultController::class, 'list'])->name('consult.list');
 Route::post('/consult', [ConsultController::class, 'store'])->name('consult.store');
 
-require __DIR__.'/auth.php';
-
+require __DIR__ . '/auth.php';

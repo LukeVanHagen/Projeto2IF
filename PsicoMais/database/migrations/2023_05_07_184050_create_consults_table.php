@@ -17,12 +17,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('profissional_id')->constrained('users');
             $table->foreignId('paciente_id')->nullable()->constrained('users');
-            $table->unsignedTinyInteger('day');
-            $table->unsignedTinyInteger('month');
-            $table->unsignedSmallInteger('year');
-            $table->unsignedTinyInteger('hours');
-            $table->unsignedTinyInteger('minutes');
-            $table->unsignedTinyInteger('period');
+            $table->date('date');
+            $table->time('time');
+            $table->time('end_time');
             $table->timestamps();
         });
     }
