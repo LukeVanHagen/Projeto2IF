@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Lista de Disponibilidades') }}
+            {{ __('Horários Disponíveis') }}
         </h2>
     </x-slot>
 
@@ -11,17 +11,19 @@
                 <table class="table-auto">
                     <thead>
                         <tr>
+                            <th>Profissional</th>
                             <th>Data</th>
                             <th>Horário</th>
                             <th>Hora de fim</th>
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach ($consults as $i => $consult)
+                    @foreach ($consults as $consult)
                         <tr>
-                            <td>{{ $consults[$i]->date }}</td>
-                            <td>{{ date('H:i', strtotime($consults[$i]->time) + ($i * 3600)) }}</td>
-                            <td>{{ date('H:i', strtotime($consults[$i]->time) + (($i + 1) * 3600)) }}</td>
+                            <td>{{ $users->find($consult->profissional_id)->name }}</td>
+                            <td>{{ $consult->date }}</td>
+                            <td>{{ date('H:i', strtotime($consult->time)) }}</td>
+                            <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
                         </tr>
                     @endforeach
                     </tbody>

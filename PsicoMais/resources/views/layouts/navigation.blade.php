@@ -16,13 +16,13 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
                     @if(Auth::check() && Auth::user()->type == 'Profissional')
-                        <x-nav-link :href="route('cadastro-disponibilidade')" :active="request()->routeIs('cadastro-disponibilidade')">
-                            {{ __('Disponibilidade') }}
+                        <x-nav-link :href="route('consult.create')" :active="request()->routeIs('consult.create')">
+                            {{ __('Disponibilizar Horário') }}
                         </x-nav-link>
                     @endif
                     @if(Auth::check() && Auth::user()->type == 'Paciente')
                         <x-nav-link :href="route('consult.list')" :active="request()->routeIs('consult.list')">
-                            {{ __('Consultas') }}
+                            {{ __('Consultas Disponíveis') }}
                         </x-nav-link>
                     @endif
                 </div>

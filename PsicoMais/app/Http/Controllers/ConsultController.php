@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Consult;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Carbon;
+use App\Models\User;
+use App\Models\Consult;
 
 
 class ConsultController extends Controller
@@ -26,27 +28,28 @@ class ConsultController extends Controller
             $consult->profissional_id = Auth::id();
             $consult->paciente_id = null;
             $consult->date = $validatedData['date'];
-            $consult->time = date('H:i', $start_time);
-            $consult->end_time = date('H:i', strtotime('+1 hour', $start_time));
+            $consult->time = date('H:i', $start_time + ($i * 3600));
+            $consult->end_time = date('H:i', $start_time + (($i + 1) * 3600));
             $consults->push($consult);
         }
-
+    
         Consult::insert($consults->toArray());
-
+    
         return redirect()->route('dashboard')->with('msg', 'Consultas criadas com sucesso!');
     }
 
     public function list()
     {
         $consults = Consult::all();
-        return view('lista-disponibilidades', compact('consults'));
+        $users = User::all();
+        return view('consult.list', compact('consults', 'users'));
     }
 
     public function createAvailability()
     {
         if (Auth::user()->type == "Profissional") {
             $dataAtual = Carbon::now()->format('Y-m-d');
-            return view('profissional.cadastroDisponibilidade', ['dataAtual' => $dataAtual]);
+            return view('consult.create', ['dataAtual' => $dataAtual]);
         } else {
             return redirect()->route('dashboard')->with('msg', 'Acesso Negado!');
         }

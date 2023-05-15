@@ -13,7 +13,7 @@
                 <label for="day">Estarei disponível em: </label>
                 <input type="date" name="date" id="date" value="{{ $dataAtual }}" required>
                 <label for="hour">ás: </label>
-                <input type="time" id="time" name="time" value="12:00" required>
+                <input type="time" id="time" name="time" required>
                 <p><label for="period">Durante</label>
                 <input type="number" name="period" id="period" min="1" max="24" placeholder="00" required>
                 <label for="period">Horas</label></p>

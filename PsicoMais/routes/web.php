@@ -32,8 +32,8 @@ Route::middleware('auth')->group(function () {
 
 
 
-Route::get('/profissional/cadastro-disponibilidade', [ConsultController::class, 'createAvailability'])->name('cadastro-disponibilidade');
-Route::get('/lista-disponibilidades', [ConsultController::class, 'list'])->name('consult.list');
+Route::get('/consult/create', [ConsultController::class, 'createAvailability'])->name('consult.create');
+Route::get('/consult/list', [ConsultController::class, 'list'])->name('consult.list');
 Route::post('/consult', [ConsultController::class, 'store'])->name('consult.store');
 
 require __DIR__ . '/auth.php';
