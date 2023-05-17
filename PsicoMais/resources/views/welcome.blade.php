@@ -54,7 +54,7 @@
            
 <!--Div com o contéudo-->
            <div class="relative-div">
-              <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden  sm:rounded-lg">
+              <div class="mt-8 bg-white overflow-hidden  sm:rounded-lg">
                   <div class="grid ">
                     <div>
                         <img src="{{ asset('images/psicomais.jpeg') }}" alt="Minha imagem">  
