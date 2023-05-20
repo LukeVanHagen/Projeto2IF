@@ -1735,5 +1735,54 @@ select {
     padding-left: 2rem;
     padding-right: 2rem;
   }
+
+
+  /*
+NOSSO CSS COMEÇA AQUI e TODA PADRONIZAÇÃO DEVE SER REALIZADA AQUI
+*/
+  .list1{
+    
+      background-color: #fff;
+      background-image: url('');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      background-size: cover;
+      flex:auto;
+      justify-self: center;
+      justify-content: center;
+      justify-items: right;
+      align-items: center;
+      text-align: center;
+ 
+  }
+  .list1{
+    
+   
+    flex:auto;
+    justify-self: center;
+    justify-content: center;
+    justify-items: right;
+    align-items: center;
+    text-align: center;
+    border-spacing:8cap;
+
 }
+  /* estilo do butão de registro*/
+.btt-2{
+  background-color: #3a88cd;
+  border-radius: 9999px;
+  border: 2px solid #3a88cd;
+  
+}
+
+/*estilo do butão de login*/
+.btt-1{
+  border: 2px solid #3a88cd;
+  border-radius: 9999px;
+  background-color: transparent;
+}
+}
+
+
 
