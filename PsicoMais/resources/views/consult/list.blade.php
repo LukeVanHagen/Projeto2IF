@@ -18,6 +18,7 @@
 
                     <tbody>
                         @foreach ($consults as $consult)
+                        @if($consult->paciente_id == null)
                             <tr>
                                 <td>{{ $users->find($consult->profissional_id)->name }}</td>
                                 <td>{{ $consult->date }}</td>
@@ -31,6 +32,7 @@
                                     </form>
                                 </td>
                             </tr>
+                            @endif
                         @endforeach
                     <template x-if="showEdit">
                                 <div class="absolute top-0 bottom-0 left-0 rigth-0 bg-gray-900 bg-opacity-20 z-0 focus:border-indigo-500 dark:focus:border-indigo-600 focus:ring-indigo-500 dark:focus:ring-indigo-600 rounded-md shadow-sm">
