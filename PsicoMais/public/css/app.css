@@ -1759,11 +1759,13 @@ select {
   }
 
   .list2 {
-    flex :auto;
+    flex:auto;
     align-items: center;
+    
      
   }
   .list1{
+    
     background-color: rgb(255, 255, 255);
   }
   .btt-2{
@@ -1775,6 +1777,17 @@ select {
     animation: glowing-button-85 20s linear infinite;
     transition: opacity 0.3s ease-in-out;
     border-radius: 10px;
+  }
+  .logo{
+    max-width: 50%;
+    width: 5%;
+    float: left;
+  }
+  .nav{
+    display: flex;
+    width: auto;
+    height: auto;
+    padding: 8px;
   }
 }
 

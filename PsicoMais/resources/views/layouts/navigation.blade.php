@@ -5,23 +5,23 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
+                    <a href="{{ route('dashboard') }}"> 
+                        <button class="w3-bar-item">Psico+</button>
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <div class="nav">
+                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="w3-bar-item">
                         {{ __('Minha Agenda') }}
                     </x-nav-link>
                     @if(Auth::check() && Auth::user()->type == 'Profissional')
-                        <x-nav-link :href="route('consult.create')" :active="request()->routeIs('consult.create')">
+                        <x-nav-link :href="route('consult.create')" :active="request()->routeIs('consult.create')" class="w3-bar-item">
                             {{ __('Disponibilizar Horário') }}
                         </x-nav-link>
                     @endif
                     @if(Auth::check() && Auth::user()->type == 'Paciente')
-                        <x-nav-link :href="route('consult.list')" :active="request()->routeIs('consult.list')">
+                        <x-nav-link :href="route('consult.list')" :active="request()->routeIs('consult.list')" class="w3-bar-item">
                             {{ __('Marcar Consultas') }}
                         </x-nav-link>
                         

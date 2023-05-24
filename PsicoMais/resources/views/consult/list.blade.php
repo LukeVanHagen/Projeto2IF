@@ -1,12 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class=" list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight ">
-            {{ __('Marcar Consulta') }}
+        <h2 class="  font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight ">
+            {{ __('Marcar Consulta') }} 
         </h2>
     </x-slot>
 
             <div class=" list2 flex justify-between  text-center  p-2 gap-4 ">
-                <table class="list2">
+                <table class="list2 dark:text-white">
                     <thead>
                         <tr>
                             <th>Profissional</th>
