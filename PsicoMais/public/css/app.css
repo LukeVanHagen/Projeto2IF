@@ -665,8 +665,14 @@ select {
 .inset-0 {
   inset: 0px;
 }
+.bottom-0 {
+  bottom: 0px;
+}
 .left-0 {
   left: 0px;
+}
+.left-1\/4 {
+  left: 25%;
 }
 .right-0 {
   right: 0px;
@@ -674,8 +680,14 @@ select {
 .top-0 {
   top: 0px;
 }
+.top-1\/2 {
+  top: 50%;
+}
 .z-0 {
   z-index: 0;
+}
+.z-10 {
+  z-index: 10;
 }
 .z-50 {
   z-index: 50;
@@ -744,6 +756,9 @@ select {
 .inline-flex {
   display: inline-flex;
 }
+.table {
+  display: table;
+}
 .grid {
   display: grid;
 }
@@ -794,6 +809,9 @@ select {
 }
 .w-8 {
   width: 2rem;
+}
+.w-96 {
+  width: 24rem;
 }
 .w-auto {
   width: auto;
@@ -926,9 +944,6 @@ select {
 .border-l-4 {
   border-left-width: 4px;
 }
-.border-r {
-  border-right-width: 1px;
-}
 .border-t {
   border-top-width: 1px;
 }
@@ -944,16 +959,16 @@ select {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
-.border-gray-400 {
-  --tw-border-opacity: 1;
-  border-color: rgb(156 163 175 / var(--tw-border-opacity));
-}
 .border-indigo-400 {
   --tw-border-opacity: 1;
   border-color: rgb(129 140 248 / var(--tw-border-opacity));
 }
 .border-transparent {
   border-color: transparent;
+}
+.bg-blue-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
 }
 .bg-gray-100 {
   --tw-bg-opacity: 1;
@@ -967,6 +982,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(31 41 55 / var(--tw-bg-opacity));
 }
+.bg-gray-900 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(17 24 39 / var(--tw-bg-opacity));
+}
 .bg-indigo-50 {
   --tw-bg-opacity: 1;
   background-color: rgb(238 242 255 / var(--tw-bg-opacity));
@@ -978,6 +997,9 @@ select {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+.bg-opacity-20 {
+  --tw-bg-opacity: 0.2;
 }
 .fill-current {
   fill: currentColor;
@@ -1087,6 +1109,9 @@ select {
   font-size: 0.75rem;
   line-height: 1rem;
 }
+.font-bold {
+  font-weight: 700;
+}
 .font-medium {
   font-weight: 500;
 }
@@ -1108,11 +1133,12 @@ select {
 .leading-tight {
   line-height: 1.25;
 }
-.tracking-wider {
-  letter-spacing: 0.05em;
-}
 .tracking-widest {
   letter-spacing: 0.1em;
+}
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
 }
 .text-gray-200 {
   --tw-text-opacity: 1;
@@ -1695,10 +1721,6 @@ select {
     align-items: center;
   }
 
-  .sm\:justify-start {
-    justify-content: flex-start;
-  }
-
   .sm\:justify-center {
     justify-content: center;
   }
@@ -1736,53 +1758,23 @@ select {
     padding-right: 2rem;
   }
 
-
-  /*
-NOSSO CSS COMEÇA AQUI e TODA PADRONIZAÇÃO DEVE SER REALIZADA AQUI
-*/
-  .list1{
-    
-      background-color: #fff;
-      background-image: url('');
-      background-repeat: no-repeat;
-      background-position: center center;
-      background-attachment: fixed;
-      background-size: cover;
-      flex:auto;
-      justify-self: center;
-      justify-content: center;
-      justify-items: right;
-      align-items: center;
-      text-align: center;
- 
+  .list2 {
+    flex :auto;
+    align-items: center;
+     
   }
   .list1{
-    
-   
-    flex:auto;
-    justify-self: center;
-    justify-content: center;
-    justify-items: right;
-    align-items: center;
-    text-align: center;
-    border-spacing:8cap;
-
+    background-color: rgb(255, 255, 255);
+  }
+  .btt-2{
+    background-color: #3a88cd;
+    border-radius: 99px;
+    border: 2px solid #3a88cd;
+    width: 60%;
+    height: 100%;
+    animation: glowing-button-85 20s linear infinite;
+    transition: opacity 0.3s ease-in-out;
+    border-radius: 10px;
+  }
 }
-  /* estilo do butão de registro*/
-.btt-2{
-  background-color: #3a88cd;
-  border-radius: 9999px;
-  border: 2px solid #3a88cd;
-  
-}
-
-/*estilo do butão de login*/
-.btt-1{
-  border: 2px solid #3a88cd;
-  border-radius: 9999px;
-  background-color: transparent;
-}
-}
-
-
 

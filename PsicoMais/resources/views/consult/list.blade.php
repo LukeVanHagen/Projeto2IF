@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-            <div class=" list1 flex justify-between  text-center bg-blue-400 p-2 gap-4 ">
+            <div class=" list2 flex justify-between  text-center  p-2 gap-4 ">
                 <table class="list2">
                     <thead>
                         <tr>
@@ -24,7 +24,7 @@
                             <td>{{ date('H:i', strtotime($consult->time)) }}</td>
                             <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
                             
-                            <td> <button class="btt-1" @click="showEdit = true">Marcar Consulta</button> </td>
+                            <td> <button class="btt-2" @click="showEdit = true">Marcar Consulta</button> </td>
 
                         </tr>
                     @endforeach
