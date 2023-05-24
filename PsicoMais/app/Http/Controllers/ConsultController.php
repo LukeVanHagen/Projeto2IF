@@ -41,8 +41,11 @@ class ConsultController extends Controller
     public function list()
     {
         $consults = Consult::all();
+        $sortedConsults = $consults->sortBy(function ($consult) {
+            return $consult->date . ' ' . $consult->time;
+        });
         $users = User::all();
-        return view('consult.list', compact('consults', 'users'));
+        return view('consult.list', compact('sortedConsults', 'users'));
     }
 
     public function createAvailability()
@@ -59,14 +62,22 @@ class ConsultController extends Controller
         $userId = $request->input('user_id');
 
         $consult = Consult::findOrFail($id);
-        $consult->paciente_id = $userId; 
+        $consult->paciente_id = $userId;
         $consult->save();
 
-        return redirect()->route('dashboard')->with('msg', 'Consultas marcada com sucesso!');
+        return redirect()->route('dashboard')->with('msg', 'Consulta marcada com sucesso!');
 
     }
+    public function cancel(Request $request, $id)
+    {
+        $userId = $request->input('user_id');
 
+        $consult = Consult::findOrFail($id);
+        $consult->paciente_id = null;
+        $consult->save();
 
+        return redirect()->route('dashboard')->with('msg', 'Consulta desmarcada com sucesso!');
 
+    }
 
 }

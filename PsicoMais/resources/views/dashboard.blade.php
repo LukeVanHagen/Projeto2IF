@@ -3,6 +3,9 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
+                @php
+                    $consults = $sortedConsults;
+                @endphp
                     @if(session('msg'))
                         {{ session('msg') }}
                     @else
@@ -28,6 +31,7 @@
                     <th>Data</th>
                     <th>Ínicio</th>
                     <th>Término</th>
+                    <th>Ação</th>
                 </tr>
             </thead>
             <tbody>
@@ -43,6 +47,12 @@
                             <td>{{ $consult->date }}</td>
                             <td>{{ date('H:i', strtotime($consult->time)) }}</td>
                             <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
+                            <td>
+                                    <form action="{{ route('consult.cancel', $consult->id) }}" method="POST">
+                                        @csrf
+                                        <button class="btt-2" type="submit">Cancelar</button>
+                                    </form>
+                            </td>
                         </tr>
                     @endif
                 @endforeach

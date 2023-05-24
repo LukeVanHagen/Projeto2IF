@@ -23,9 +23,12 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $consults = Consult::all();$consults = Consult::all();
+    $consults = Consult::all();
+    $sortedConsults = $consults->sortBy(function ($consult) {
+        return $consult->date . ' ' . $consult->time;
+    });
     $users = User::all();
-    return view('dashboard', compact('consults', 'users'));
+    return view('dashboard', compact('sortedConsults', 'users'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -40,5 +43,6 @@ Route::get('/consult/create', [ConsultController::class, 'createAvailability'])-
 Route::get('/consult/list', [ConsultController::class, 'list'])->name('consult.list');
 Route::post('/consult', [ConsultController::class, 'store'])->name('consult.store');
 Route::post('/consult/mark/{id}', [ConsultController::class, 'mark'])->name('consult.mark');
+Route::post('/consult/cancel/{id}', [ConsultController::class, 'cancel'])->name('consult.cancel');
 
 require __DIR__ . '/auth.php';

@@ -13,10 +13,14 @@
                             <th>Data</th>
                             <th>Ínicio</th>
                             <th>Termino</th>
+                            <th>Ação</th>
                         </tr>
                     </thead>
 
                     <tbody>
+                    @php
+                        $consults = $sortedConsults;
+                    @endphp
                         @foreach ($consults as $consult)
                         @if($consult->paciente_id == null)
                             <tr>
