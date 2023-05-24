@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\ConsultController;
 use App\Http\Controllers\ProfileController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Models\Consult;
 
 
 /*
@@ -21,7 +23,9 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $consults = Consult::all();$consults = Consult::all();
+    $users = User::all();
+    return view('dashboard', compact('consults', 'users'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -35,5 +39,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/consult/create', [ConsultController::class, 'createAvailability'])->name('consult.create');
 Route::get('/consult/list', [ConsultController::class, 'list'])->name('consult.list');
 Route::post('/consult', [ConsultController::class, 'store'])->name('consult.store');
+Route::post('/consult/mark/{id}', [ConsultController::class, 'mark'])->name('consult.mark');
 
 require __DIR__ . '/auth.php';

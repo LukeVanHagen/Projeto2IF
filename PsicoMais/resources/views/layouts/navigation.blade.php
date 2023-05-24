@@ -12,9 +12,9 @@
 
                 <!-- Navigation Links -->
                 <div class="nav">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="w3-bar-item">
-                        {{ __('Minha Agenda') }}
-                    </x-nav-link>
+                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="w3-bar-item">
+                            {{ __('Minha Agenda') }}
+                        </x-nav-link>
                     @if(Auth::check() && Auth::user()->type == 'Profissional')
                         <x-nav-link :href="route('consult.create')" :active="request()->routeIs('consult.create')" class="w3-bar-item">
                             {{ __('Disponibilizar Horário') }}
@@ -22,10 +22,8 @@
                     @endif
                     @if(Auth::check() && Auth::user()->type == 'Paciente')
                         <x-nav-link :href="route('consult.list')" :active="request()->routeIs('consult.list')" class="w3-bar-item">
-                            {{ __('Marcar Consultas') }}
+                            {{ __('Horários Disponíveis') }}
                         </x-nav-link>
-                        
-                        
                     @endif
                 </div>
             </div>

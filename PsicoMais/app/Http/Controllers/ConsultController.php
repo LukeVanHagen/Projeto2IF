@@ -32,9 +32,9 @@ class ConsultController extends Controller
             $consult->end_time = date('H:i', $start_time + (($i + 1) * 3600));
             $consults->push($consult);
         }
-    
+
         Consult::insert($consults->toArray());
-    
+
         return redirect()->route('dashboard')->with('msg', 'Consultas criadas com sucesso!');
     }
 
@@ -54,4 +54,19 @@ class ConsultController extends Controller
             return redirect()->route('dashboard')->with('msg', 'Acesso Negado!');
         }
     }
+    public function mark(Request $request, $id)
+    {
+        $userId = $request->input('user_id');
+
+        $consult = Consult::findOrFail($id);
+        $consult->paciente_id = $userId; 
+        $consult->save();
+
+        return redirect()->route('dashboard')->with('msg', 'Consultas marcada com sucesso!');
+
+    }
+
+
+
+
 }
