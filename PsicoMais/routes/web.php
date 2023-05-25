@@ -44,5 +44,6 @@ Route::get('/consult/list', [ConsultController::class, 'list'])->name('consult.l
 Route::post('/consult', [ConsultController::class, 'store'])->name('consult.store');
 Route::post('/consult/mark/{id}', [ConsultController::class, 'mark'])->name('consult.mark');
 Route::post('/consult/cancel/{id}', [ConsultController::class, 'cancel'])->name('consult.cancel');
+Route::post('/consult/destroy/{id}', [ConsultController::class, 'destroy'])->name('consult.destroy');
 
 require __DIR__ . '/auth.php';

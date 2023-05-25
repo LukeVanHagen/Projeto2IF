@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 
@@ -79,5 +78,16 @@ class ConsultController extends Controller
         return redirect()->route('dashboard')->with('msg', 'Consulta desmarcada com sucesso!');
 
     }
+    public function destroy($id)
+    {
+        $consult = Consult::find($id);
 
+        if (!$consult) {
+            return redirect()->route('dashboard')->with('msg', 'Consulta não encontrada');
+        }
+
+        $consult->delete();
+
+        return redirect()->route('dashboard')->with('msg', 'Consulta excluída com sucesso!');
+    }
 }
