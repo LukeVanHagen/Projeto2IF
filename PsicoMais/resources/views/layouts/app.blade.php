@@ -13,11 +13,15 @@
 
         <!-- Scripts -->
         <script src="../js/app.js"></script>
+
         <link rel="stylesheet" type="text/css" href="../css/app.css" />
+        
     </head>
-    <body class="font-sans antialiased">
+    <body class=" body font-sans antialiased">
+
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             @include('layouts.navigation')
+            
             <!-- Page Heading -->
             @if (isset($header))
                 <header class=" list 1 bg-white dark:bg-gray-800 shadow">

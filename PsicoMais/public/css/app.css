@@ -47,6 +47,7 @@ html {
 body {
   margin: 0; /* 1 */
   line-height: inherit; /* 2 */
+  
 }
 
 /*
@@ -1767,6 +1768,7 @@ select {
   .list1{
     
     background-color: rgb(255, 255, 255);
+    
   }
   .btt-2{
     background-color: #3a88cd;
@@ -1784,10 +1786,33 @@ select {
     float: left;
   }
   .nav{
-    display: flex;
-    width: auto;
-    height: auto;
-    padding: 8px;
+    display:inline ;
+    padding: 15px;
+    width: 100%;
+    height: 15px;
+    text-decoration: none;
+  }
+
+  .forms_create{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    border-color: #6b7280;
+    border-width: 1px;
+    border-radius: 10px;
+    padding-top: 0.5rem;
+    padding-right: 0.75rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    --tw-shadow: 0 0 #0000;
+  }
+  .select{
+
+  border-radius: 10px;
+  
   }
 }
 
