@@ -34,7 +34,7 @@ class ConsultController extends Controller
 
         Consult::insert($consults->toArray());
 
-        return redirect()->route('dashboard')->with('msg', 'Consultas criadas com sucesso!');
+        return redirect()->route('consult.create')->with('msg', 'Consultas criadas com sucesso!');
     }
 
     public function list()
@@ -50,8 +50,13 @@ class ConsultController extends Controller
     public function createAvailability()
     {
         if (Auth::user()->type == "Profissional") {
+            $users = User::all();
+            $consults = Consult::all();
+            $sortedConsults = $consults->sortBy(function ($consult) {
+                return $consult->date . ' ' . $consult->time;
+            });
             $dataAtual = Carbon::now()->format('Y-m-d');
-            return view('consult.create', ['dataAtual' => $dataAtual]);
+            return view('consult.create', compact('sortedConsults', 'users','dataAtual'));
         } else {
             return redirect()->route('dashboard')->with('msg', 'Acesso Negado!');
         }

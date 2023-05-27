@@ -26,7 +26,6 @@
                             {{ __('Consultas Agendadas :') }}
                         </h3>
 
-
                         <div class="list2 flex justify-between text-center p-2 gap-4">
                             <table class="list2 dark:text-white p-2">
                                 <thead>
@@ -39,7 +38,6 @@
                                         <th>Data</th>
                                         <th>Ínicio</th>
                                         <th>Término</th>
-                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,25 +53,23 @@
                                                 <td>{{ $consult->date }}</td>
                                                 <td>{{ date('H:i', strtotime($consult->time)) }}</td>
                                                 <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
-
                                                 <div class="D_P_P">
+                                                    <td>
+                                                        <form action="{{ route('consult.cancel', $consult->id) }}" method="POST">
+                                                            @csrf
+                                                            <x-primary-button class="btt-3" type="submit">Cancelar</x-primary-button>
+                                                        </form>
+                                                    </td>
+                                                    @if(Auth::user()->type == 'Profissional')
                                                         <td>
-                                                            <form action="{{ route('consult.cancel', $consult->id) }}" method="POST">
+                                                            <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">
                                                                 @csrf
-                                                                <x-primary-button class="btt-3" type="submit">Cancelar</x-primary-button>
+                                                                <x-primary-button class="btt-3" type="submit">Excluir</x-primary-button>
                                                             </form>
                                                         </td>
-                                                                @if(Auth::user()->type == 'Profissional')
-                                                                <td>
-                                                                    <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">
-                                                                        @csrf
-                                                                        <x-primary-button class="btt-3" type="submit">Excluir</x-primary-button>
-                                                                </form>
-                                                        </td>
-                                                </div>
                                                     @endif
+                                                </div>
                                             </tr>
-                                           
                                         @endif
                                     @endforeach
                                 </tbody>
@@ -84,59 +80,6 @@
                             {{ __('Consultas Agendadas :') }}
                         </h3>
                         <p>Não há consultas agendadas.</p>
-                    @endif
-
-                    @if(Auth::user()->type == 'Profissional')
-                        @php
-                            $hasAvailableConsults = false;
-                        @endphp
-
-                        @foreach ($sortedConsults as $consult)
-                            @if (!$consult->paciente_id && $consult->profissional_id == auth()->user()->id)
-                                @php
-                                    $hasAvailableConsults = true;
-                                    break;
-                                @endphp
-                            @endif
-                        @endforeach
-                        <h3 class=" list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                                {{ __('Consultas Disponibilizadas :') }}
-                        </h3>
-                        @if ($hasAvailableConsults)
-                            
-
-                            <div class="list2 flex justify-between text-center p-2 gap-4">
-                                <table class="list2 dark:text-white p-2">
-                                    <thead>
-                                        <tr>
-                                            <th>Data</th>
-                                            <th>Ínicio</th>
-                                            <th>Término</th>
-                                            
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($sortedConsults as $consult)
-                                            @if (!$consult->paciente_id && $consult->profissional_id == auth()->user()->id)
-                                                <tr>
-                                                    <td>{{ $consult->date }}</td>
-                                                    <td>{{ date('H:i', strtotime($consult->time)) }}</td>
-                                                    <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
-                                                    <td>
-                                                        <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">
-                                                            @csrf
-                                                            <x-primary-button class="btt-3" type="submit">Excluir</x-primary-button>
-                                                        </form>
-                                                    </td>
-                                                </tr>
-                                            @endif
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        @else
-                            <p>Não há consultas disponibilizadas.</p>
-                        @endif
                     @endif
                 </div>
             </div>
