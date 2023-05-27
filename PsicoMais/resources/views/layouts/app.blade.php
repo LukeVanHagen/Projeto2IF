@@ -17,16 +17,17 @@
         <link rel="stylesheet" type="text/css" href="../css/app.css" />
         
     </head>
-    <body class=" body font-sans antialiased">
+    <body>
 
-        <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div>
             @include('layouts.navigation')
             
             <!-- Page Heading -->
             @if (isset($header))
                 <header class=" list 1 bg-white dark:bg-gray-800 shadow">
                     <div class="list 1 max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
+                        {{ $header }} 
+
                     </div>
                 </header>
             @endif
@@ -34,7 +35,23 @@
             <!-- Page Content -->
             <main>
                 {{ $slot }}
+                
             </main>
         </div>
     </body>
 </html>
+
+<style>
+    body {
+        background-image: url('/images/psicomais.jpeg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        max-width: 100%;
+        width: 100%;
+        float: left;
+        height: 100%;
+       
+        background-size: cover;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    </style>

@@ -1767,13 +1767,16 @@ select {
   }
   .list1{
     
-    background-color: rgb(255, 255, 255);
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 20px;
   }
   .btt-2{
-    background-color: #3a88cd;
+    background-color:#bed6e8;
     border-radius: 99px;
-    border: 2px solid #3a88cd;
+    border: 2px solid #bed6e8;
     width: 60%;
     height: 100%;
     animation: glowing-button-85 20s linear infinite;
@@ -1786,11 +1789,17 @@ select {
     float: left;
   }
   .nav{
-    display:inline ;
-    padding: 15px;
-    width: 100%;
-    height: 15px;
-    text-decoration: none;
+    background-color:#ffc4d8;
+    color:#1f2937;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    
+
+   
+
+    
   }
 
   .forms_create{
@@ -1814,5 +1823,22 @@ select {
   border-radius: 10px;
   
   }
+  .img{
+    background-image:"images/psicomais.jpeg";
+    max-width: 100%;
+    width: 100%;
+    float: left;
+    height: 100%;
+    opacity:20;
+    background-size: cover;
+  }
+  .loggout{
+    display: flex;
+    align-items: center;
+    margin-left: 850px;
+    color:#1f2937;
+    
+  }
 }
+
 
