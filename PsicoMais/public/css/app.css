@@ -1806,17 +1806,21 @@ select {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background-color: #fff;
-    border-color: #6b7280;
-    border-width: 1px;
-    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25vh;
+    max-width: 4000px;
+    padding: 20px;
+   
+
     padding-top: 0.5rem;
     padding-right: 0.75rem;
     padding-bottom: 0.5rem;
     padding-left: 0.75rem;
     font-size: 1rem;
     line-height: 1.5rem;
-    --tw-shadow: 0 0 #0000;
+  
   }
   .select{
 

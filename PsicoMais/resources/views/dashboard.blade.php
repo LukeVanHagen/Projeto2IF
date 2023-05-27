@@ -95,7 +95,7 @@
                                 @endphp
                             @endif
                         @endforeach
-                        <h3 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                        <h3 class=" list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                                 {{ __('Consultas Disponibilizadas:') }}
                         </h3>
                         @if ($hasAvailableConsults)
