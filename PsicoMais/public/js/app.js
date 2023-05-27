@@ -23814,3 +23814,19 @@ process.umask = function() { return 0; };
 /******/ 	
 /******/ })()
 ;
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Encontra todos os botões com atributo 'data-confirm'
+  var confirmButtons = document.querySelectorAll('[data-confirm]');
+
+  // Adiciona um evento de clique a cada botão
+  confirmButtons.forEach(function(button) {
+      button.addEventListener('click', function(event) {
+          // Exibe o pop-up de confirmação
+          var message = button.getAttribute('data-confirm');
+          if (!confirm(message)) {
+              event.preventDefault(); // Cancela a ação padrão do botão
+          }
+      });
+  });
+});

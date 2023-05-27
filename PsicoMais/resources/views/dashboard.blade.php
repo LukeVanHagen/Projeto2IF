@@ -22,7 +22,7 @@
                     @endforeach
 
                     @if ($hasConsults)
-                        <h3 class=" list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                        <h3 class="list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                             {{ __('Consultas Agendadas :') }}
                         </h3>
 
@@ -38,6 +38,7 @@
                                         <th>Data</th>
                                         <th>Ínicio</th>
                                         <th>Término</th>
+                                        <th colspan=2>Ação<th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -57,14 +58,14 @@
                                                     <td>
                                                         <form action="{{ route('consult.cancel', $consult->id) }}" method="POST">
                                                             @csrf
-                                                            <x-primary-button class="btt-3" type="submit">Cancelar</x-primary-button>
+                                                            <x-primary-button class="btt-3" type="submit" data-confirm="Tem certeza que deseja cancelar?">Cancelar</x-primary-button>
                                                         </form>
                                                     </td>
                                                     @if(Auth::user()->type == 'Profissional')
                                                         <td>
                                                             <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">
                                                                 @csrf
-                                                                <x-primary-button class="btt-3" type="submit">Excluir</x-primary-button>
+                                                                <x-primary-button class="btt-3" type="submit" data-confirm="Tem certeza que deseja excluir?">Excluir</x-primary-button>
                                                             </form>
                                                         </td>
                                                     @endif

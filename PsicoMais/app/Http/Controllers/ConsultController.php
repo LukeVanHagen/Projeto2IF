@@ -93,6 +93,6 @@ class ConsultController extends Controller
 
         $consult->delete();
 
-        return redirect()->route('dashboard')->with('msg', 'Consulta excluída com sucesso!');
+        return redirect()->route('consult.create')->with('msg', 'Consulta excluída com sucesso!');
     }
 }
