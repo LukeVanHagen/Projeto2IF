@@ -50,8 +50,8 @@
         width: 100%;
         float: left;
         height: 100%;
-       
         background-size: cover;
         background-color: rgba(0, 0, 0, 0.5);
     }
+    
     </style>

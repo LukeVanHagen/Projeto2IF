@@ -23,7 +23,7 @@
 
                     @if ($hasConsults)
                         <h3 class=" list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                            {{ __('Consultas Agendadas:') }}
+                            {{ __('Consultas Agendadas :') }}
                         </h3>
 
 
@@ -39,7 +39,7 @@
                                         <th>Data</th>
                                         <th>Ínicio</th>
                                         <th>Término</th>
-                                        <th colspan='2'>Ação</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -55,21 +55,25 @@
                                                 <td>{{ $consult->date }}</td>
                                                 <td>{{ date('H:i', strtotime($consult->time)) }}</td>
                                                 <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
-                                                <td>
-                                                    <form action="{{ route('consult.cancel', $consult->id) }}" method="POST">
-                                                        @csrf
-                                                        <button class="btt-2" type="submit">Cancelar</button>
-                                                    </form>
-                                                </td>
-                                                @if(Auth::user()->type == 'Profissional')
-                                                    <td>
-                                                        <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">
-                                                            @csrf
-                                                            <button class="btt-2" type="submit">Excluir</button>
-                                                        </form>
-                                                    </td>
-                                                @endif
+
+                                                <div class="D_P_P">
+                                                        <td>
+                                                            <form action="{{ route('consult.cancel', $consult->id) }}" method="POST">
+                                                                @csrf
+                                                                <x-primary-button class="btt-3" type="submit">Cancelar</x-primary-button>
+                                                            </form>
+                                                        </td>
+                                                                @if(Auth::user()->type == 'Profissional')
+                                                                <td>
+                                                                    <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">
+                                                                        @csrf
+                                                                        <x-primary-button class="btt-3" type="submit">Excluir</x-primary-button>
+                                                                </form>
+                                                        </td>
+                                                </div>
+                                                    @endif
                                             </tr>
+                                           
                                         @endif
                                     @endforeach
                                 </tbody>
@@ -77,7 +81,7 @@
                         </div>
                     @else
                         <h3 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                            {{ __('Consultas Agendadas:') }}
+                            {{ __('Consultas Agendadas :') }}
                         </h3>
                         <p>Não há consultas agendadas.</p>
                     @endif
@@ -96,7 +100,7 @@
                             @endif
                         @endforeach
                         <h3 class=" list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                                {{ __('Consultas Disponibilizadas:') }}
+                                {{ __('Consultas Disponibilizadas :') }}
                         </h3>
                         @if ($hasAvailableConsults)
                             
@@ -108,7 +112,7 @@
                                             <th>Data</th>
                                             <th>Ínicio</th>
                                             <th>Término</th>
-                                            <th>Ação</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -121,7 +125,7 @@
                                                     <td>
                                                         <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">
                                                             @csrf
-                                                            <button class="btt-2" type="submit">Excluir</button>
+                                                            <x-primary-button class="btt-3" type="submit">Excluir</x-primary-button>
                                                         </form>
                                                     </td>
                                                 </tr>
