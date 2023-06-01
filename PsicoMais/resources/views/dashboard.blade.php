@@ -2,7 +2,8 @@
     <div>
         <div>
             <div>
-                <div class="">
+                <div class="disp_horario">
+                <div class="list1">
                     @if(session('msg'))
                         {{ session('msg') }}
                     @endif
@@ -20,7 +21,7 @@
                             @endphp
                         @endif
                     @endforeach
-
+                    </div>
                     @if ($hasConsults)
                         <h3 class="list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                             {{ __('Consultas Agendadas :') }}
@@ -77,10 +78,14 @@
                             </table>
                         </div>
                     @else
-                        <h3 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                    <div class="disp_horario">
+                        <h3 class="list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                             {{ __('Consultas Agendadas :') }}
+                           
                         </h3>
-                        <p>Não há consultas agendadas.</p>
+                      <div class="disp_horario">  <p class="list1"> Não há consultas agendadas.</p> </div>
+                       
+                    </div>    
                     @endif
                 </div>
             </div>
