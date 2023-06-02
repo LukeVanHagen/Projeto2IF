@@ -43,7 +43,7 @@
 
 <style>
     body {
-        background-image: url('/images/psicomais.jpeg');
+        background-image: url('/images/fund-branco.jpeg');
         background-repeat: no-repeat;
         background-size: cover;
         max-width: 100%;
