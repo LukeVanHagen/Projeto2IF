@@ -973,7 +973,7 @@ select {
 }
 .bg-gray-100 {
   --tw-bg-opacity: 1;
-  background-color: rgb(243 244 246 / var(--tw-bg-opacity));
+  background-color: rgb(191 221 243 / var(--tw-bg-opacity));
 }
 .bg-gray-500 {
   --tw-bg-opacity: 1;
@@ -981,7 +981,7 @@ select {
 }
 .bg-gray-800 {
   --tw-bg-opacity: 1;
-  background-color: rgb(31 41 55 / var(--tw-bg-opacity));
+  background-color: rgb(5 79 119 / var(--tw-bg-opacity));
 }
 .bg-gray-900 {
   --tw-bg-opacity: 1;
@@ -997,7 +997,7 @@ select {
 }
 .bg-white {
   --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+  background-color: rgb(211 211 211 / var(--tw-bg-opacity));
 }
 .bg-opacity-20 {
   --tw-bg-opacity: 0.2;
@@ -1099,7 +1099,7 @@ select {
   line-height: 1.75rem;
 }
 .text-sm {
-  font-size: 0.875rem;
+  font-size: 1rem;
   line-height: 1.25rem;
 }
 .text-xl {
@@ -1159,11 +1159,11 @@ select {
 }
 .text-gray-600 {
   --tw-text-opacity: 1;
-  color: rgb(75 85 99 / var(--tw-text-opacity));
+  color: rgb(52 57 61 / var(--tw-text-opacity));
 }
 .text-gray-700 {
   --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
+  color: rgb(72 77 80 / var(--tw-text-opacity));
 }
 .text-gray-800 {
   --tw-text-opacity: 1;
@@ -1792,7 +1792,7 @@ select {
     animation: glowing-button-85 20s linear infinite;
     transition: opacity 0.3s ease-in-out;
     border-radius: 10px;
-    background-color:#ffc4d8;
+    background-color:#054f77;
     
 
   }
@@ -1802,8 +1802,8 @@ select {
     float: left;
   }
   .nav{
-    background-color:#ffc4d8;
-    color:#1f2937;
+    background-color:#4682b4;
+    color:#ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1875,5 +1875,4 @@ select {
     float:right;
   }
 }
-
 
