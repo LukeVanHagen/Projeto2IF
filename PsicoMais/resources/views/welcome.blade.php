@@ -23,7 +23,7 @@
     </head>
     <!--Corpo da página -->
     <body class="antialiased ">
-        <div class="relative flex items-top justify-center min-h-screen bg-white dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+        <div class="relative flex items-top justify-center min-h-screen bg-white-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
           <!--Navbar com login e registro -->
         <div class="w3-top ">
                 <div class="w3-bar w3-white  w3-padding w3-card">

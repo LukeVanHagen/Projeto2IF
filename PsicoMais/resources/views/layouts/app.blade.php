@@ -24,7 +24,7 @@
             
             <!-- Page Heading -->
             @if (isset($header))
-                <header class=" list 1 bg-white dark:bg-gray-800 shadow">
+                <header class=" list 1 bg-white-100 dark:bg-gray-800 shadow">
                     <div class="list 1 max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }} 
 
@@ -43,15 +43,14 @@
 
 <style>
     body {
-        background-image: url('/images/fund-branco.jpeg');
+        background-image: url('/images/fundbranco.jpeg');
         background-repeat: no-repeat;
         background-size: cover;
         max-width: 100%;
         width: 100%;
         float: left;
         height: 100%;
-        background-size: cover;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.1);
     }
     
     </style>
