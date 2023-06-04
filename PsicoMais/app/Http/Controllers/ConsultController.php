@@ -18,24 +18,33 @@ class ConsultController extends Controller
             'time' => 'required|date_format:H:i',
             'period' => 'required|integer|min:1|max:24',
         ]);
-
+    
         $start_time = strtotime($validatedData['time']);
         $consults = collect();
-
+        $current_date = $validatedData['date'];
+    
         for ($i = 0; $i < $validatedData['period']; $i++) {
             $consult = new Consult;
             $consult->profissional_id = Auth::id();
             $consult->paciente_id = null;
-            $consult->date = $validatedData['date'];
+    
+            $consult->date = $current_date;
             $consult->time = date('H:i', $start_time + ($i * 3600));
             $consult->end_time = date('H:i', $start_time + (($i + 1) * 3600));
+    
+            // Adicionar 1 dia se o horário final for 00:00
+            if ($consult->end_time === "00:00") {
+                $current_date = date('Y-m-d', strtotime($current_date . ' +1 day'));
+            }
+            
             $consults->push($consult);
         }
-
+    
         Consult::insert($consults->toArray());
-
+    
         return redirect()->route('consult.create')->with('msg', 'Consultas criadas com sucesso!');
     }
+    
 
     public function list()
     {
