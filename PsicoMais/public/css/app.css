@@ -1105,6 +1105,7 @@ select {
 .text-sm {
   font-size: 1rem;
   line-height: 1.25rem;
+  padding-left: 15px;
 }
 .text-xl {
   font-size: 1.25rem;
@@ -1796,7 +1797,6 @@ select {
     height: 100%;
     animation: glowing-button-85 20s linear infinite;
     transition: opacity 0.3s ease-in-out;
-    border-radius: 10px;
     background-color:#054f77;
     
 
@@ -1842,7 +1842,8 @@ select {
   }
   .select{
 
-  border-radius: 10px;
+  border-radius: 9999px;
+  background-color: #ebebec;
   
   }
   .img{

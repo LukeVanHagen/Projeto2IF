@@ -10,7 +10,7 @@
             <div>
                 <div>
                     <div class="forms_create">
-                        <form action="{{ route('consult.store') }}" method="POST">
+                        <form action="{{ route('consult.store') }}" method="POST" class=" bg-white sm:max-w-md mt-6 px-6 py-4 sm:rounded-lg shadow-md ">
                             @csrf
 
                             <div class="B_D_P">
