@@ -29,7 +29,7 @@
                                 </p>
                             </div>
                             <div class="B_D_P">
-                                <x-primary-button class="btt-3">
+                                <x-primary-button>
                                     {{ __('Enviar') }}
                                 </x-primary-button>
                             </div>
@@ -85,7 +85,7 @@
                                                         <td>
                                                             <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">
                                                                 @csrf
-                                                                <x-primary-button class="btt-3" type="submit" data-confirm="Tem certeza que deseja excluir?">Excluir</x-primary-button>
+                                                                <x-primary-button type="submit" data-confirm="Tem certeza que deseja excluir?">Excluir</x-primary-button>
                                                             </form>
                                                         </td>
                                                     </tr>
