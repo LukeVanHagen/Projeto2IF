@@ -34,7 +34,7 @@ class ConsultController extends Controller
             $consult->time = date('H:i', $start_time + ($i * 3600));
             $consult->end_time = date('H:i', $start_time + (($i + 1) * 3600));
     
-            if ($consult->end_time >= "00:00" && !$dateModified) {
+            if ($consult->end_time >= "00:00" && !$dateModified && $consult->end_time < "01:00") {
                 $current_date = date('Y-m-d', strtotime($current_date . ' +1 day'));
                 $dateModified = true;
             } elseif ($consult->end_time <= "00:00") {
