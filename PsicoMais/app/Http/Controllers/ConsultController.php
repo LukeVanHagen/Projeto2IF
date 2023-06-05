@@ -35,14 +35,17 @@ class ConsultController extends Controller
             $query->whereBetween('date', [$startDateTime, $endDateTime])
                 ->orWhere(function ($subQuery) use ($startDateTime, $endDateTime) {
                     $subQuery->where('date', '<', $startDateTime)
-                        ->where('end_time', '>', $startDateTime);
+                        ->where('end_time', '>', $startDateTime)
+                        ->where('end_time', '<', $endDateTime);
                 })
                 ->orWhere(function ($subQuery) use ($startDateTime, $endDateTime) {
-                    $subQuery->where('date', '<', $endDateTime)
+                    $subQuery->where('date', '>', $startDateTime)
+                        ->where('date', '<', $endDateTime)
                         ->where('end_time', '>', $endDateTime);
                 });
         })
         ->get();
+    
     
         if ($existingConsults->count() > 0) {
             return redirect()->route('consult.create')->with('msg', 'Já existe uma consulta disponibilizada nesse horário.');
