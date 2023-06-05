@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('profissional_id')->constrained('users');
             $table->foreignId('paciente_id')->nullable()->constrained('users');
             $table->date('date');
-            $table->time('time');
             $table->time('end_time');
             $table->timestamps();
         });

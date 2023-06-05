@@ -10,7 +10,7 @@
             <div>
                 <div>
                     <div class="forms_create">
-                        <form action="{{ route('consult.store') }}" method="POST" class=" bg-white sm:max-w-md mt-6 px-6 py-4 sm:rounded-lg shadow-md ">
+                        <form action="{{ route('consult.store') }}" method="POST" class="bg-white sm:max-w-md mt-6 px-6 py-4 sm:rounded-lg shadow-md">
                             @csrf
 
                             <div class="B_D_P">
@@ -70,7 +70,7 @@
                                         <thead>
                                             <tr>
                                                 <th>Data</th>
-                                                <th>Ínicio</th>
+                                                <th>Início</th>
                                                 <th>Término</th>
                                                 <th>Ações</th>
                                             </tr>
@@ -79,8 +79,8 @@
                                             @foreach ($sortedConsults as $consult)
                                                 @if (!$consult->paciente_id && $consult->profissional_id == auth()->user()->id)
                                                     <tr>
-                                                        <td>{{ $consult->date }}</td>
-                                                        <td>{{ date('H:i', strtotime($consult->time)) }}</td>
+                                                        <td>{{ date('d-m-Y', strtotime($consult->date)) }}</td>
+                                                        <td>{{ date('H:i', strtotime($consult->date)) }}</td>
                                                         <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
                                                         <td>
                                                             <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">

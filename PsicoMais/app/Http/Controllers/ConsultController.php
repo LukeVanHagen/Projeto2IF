@@ -1,97 +1,75 @@
 <?php
+
 namespace App\Http\Controllers;
 
-
+use App\Models\Consult;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Carbon;
-use App\Models\User;
-use App\Models\Consult;
-
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class ConsultController extends Controller
 {
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validator = Validator::make($request->all(), [
             'date' => 'required|date',
-            'time' => 'required|date_format:H:i',
+            'time' => 'required',
             'period' => 'required|integer|min:1|max:24',
         ]);
     
-        $start_time = strtotime($validatedData['time']);
-        $consults = collect();
-        $current_date = $validatedData['date'];
-    
-        $dateModified = false; // Variável para rastrear se a data já foi modificada
-    
-        for ($i = 0; $i < $validatedData['period']; $i++) {
-            $consult = new Consult;
-            $consult->profissional_id = Auth::id();
-            $consult->paciente_id = null;
-    
-            $consult->date = $current_date;
-            $consult->time = date('H:i', $start_time + ($i * 3600));
-            $consult->end_time = date('H:i', $start_time + (($i + 1) * 3600));
-    
-            if ($consult->end_time >= "00:00" && !$dateModified && $consult->end_time < "01:00") {
-                $current_date = date('Y-m-d', strtotime($current_date . ' +1 day'));
-                $dateModified = true;
-            } elseif ($consult->end_time <= "00:00") {
-                $dateModified = false; // Reinicia a variável para a próxima ocorrência de ultrapassar a meia-noite
-            }
-    
-            // Verifica se já existe uma consulta do mesmo profissional no mesmo horário
-            $existingConsult = Consult::where('profissional_id', $consult->profissional_id)
-                ->where('date', $consult->date)
-                ->where(function ($query) use ($consult) {
-                    $query->where(function ($q) use ($consult) {
-                        $q->where('time', '>=', $consult->time)
-                            ->where('time', '<', $consult->end_time);
-                    })
-                    ->orWhere(function ($q) use ($consult) {
-                        $q->where('time', '<=', $consult->time)
-                            ->where('end_time', '>', $consult->time);
-                    })
-                    ->orWhere(function ($q) use ($consult) {
-                        $q->where('time', '>=', $consult->time)
-                            ->where('end_time', '<=', $consult->end_time);
-                    });
-                })
-                ->first();
-    
-            if ($existingConsult) {
-                return redirect()->route('consult.create')->with('msg', 'Já existe uma consulta disponibilizada nesse horário.');
-            }
-    
-            // Verifica se já existe uma consulta do mesmo profissional durante o intervalo de horário
-            $overlappingConsult = Consult::where('profissional_id', $consult->profissional_id)
-                ->where('date', $consult->date)
-                ->where(function ($query) use ($consult) {
-                    $query->where('time', '<', $consult->time)
-                        ->where('end_time', '>', $consult->time);
-                })
-                ->orWhere(function ($query) use ($consult) {
-                    $query->where('time', '>=', $consult->time)
-                        ->where('end_time', '<=', $consult->end_time);
-                })
-                ->orWhere(function ($query) use ($consult) {
-                    $query->where('time', '<', $consult->end_time)
-                        ->where('end_time', '>', $consult->end_time);
-                })
-                ->first();
-    
-            if ($overlappingConsult) {
-                return redirect()->route('consult.create')->with('msg', 'Já existe uma consulta durante o intervalo desse horário.');
-            }
-    
-            $consults->push($consult);
+        if ($validator->fails()) {
+            return redirect()->route('consult.create')->withErrors($validator)->withInput();
         }
     
-        Consult::insert($consults->toArray());
+        $validatedData = $validator->validated();
+    
+        $startDateTime = Carbon::createFromFormat('Y-m-d H:i', $validatedData['date'] . ' ' . $validatedData['time']);
+        $endDateTime = $startDateTime->copy()->addHours($validatedData['period']);
+    
+        $existingConsults = DB::table('consults')
+        ->where('profissional_id', Auth::id())
+        ->where(function ($query) use ($startDateTime, $endDateTime) {
+            $query->whereBetween('date', [$startDateTime, $endDateTime])
+                ->orWhere(function ($subQuery) use ($startDateTime, $endDateTime) {
+                    $subQuery->where('date', '<', $startDateTime)
+                        ->where('end_time', '>', $startDateTime);
+                })
+                ->orWhere(function ($subQuery) use ($startDateTime, $endDateTime) {
+                    $subQuery->where('date', '<', $endDateTime)
+                        ->where('end_time', '>', $endDateTime);
+                });
+        })
+        ->get();
+    
+        if ($existingConsults->count() > 0) {
+            return redirect()->route('consult.create')->with('msg', 'Já existe uma consulta disponibilizada nesse horário.');
+        }
+    
+        $consults = [];
+        $dateModified = false;
+    
+        for ($i = 0; $i < $validatedData['period']; $i++) {
+            $startHour = $startDateTime->copy()->addHours($i);
+            $endHour = $startDateTime->copy()->addHours($i + 1);
+    
+            $consults[] = [
+                'profissional_id' => Auth::id(),
+                'paciente_id' => null,
+                'date' => $startHour->format('Y-m-d H:i'), // Combina a data e a hora
+                'end_time' => $endHour->format('H:i'), // Utiliza apenas a hora final
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ];
+        }
+    
+        DB::table('consults')->insert($consults);
     
         return redirect()->route('consult.create')->with('msg', 'Consultas criadas com sucesso!');
     }
+    
     
 
     public function list()
