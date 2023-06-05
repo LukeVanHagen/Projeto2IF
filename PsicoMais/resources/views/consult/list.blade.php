@@ -32,8 +32,8 @@
                         @if($consult->paciente_id == null)
                             <tr>
                                 <td>{{ $users->find($consult->profissional_id)->name }}</td>
-                                <td>{{ $consult->date }}</td>
-                                <td>{{ date('H:i', strtotime($consult->time)) }}</td>
+                                <td>{{ date('d-m-Y', strtotime($consult->date)) }}</td>
+                                <td>{{ date('H:i', strtotime($consult->date)) }}</td>
                                 <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
                                 <td>
                                     <form action="{{ route('consult.mark', $consult->id) }}" method="POST">
@@ -45,7 +45,8 @@
                             </tr>
                             @endif
                         @endforeach
-
+                        
+                                                        
 
 
                         <template x-if="showEdit">

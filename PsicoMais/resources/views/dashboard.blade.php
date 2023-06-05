@@ -52,8 +52,8 @@
                                                 @elseif(Auth::user()->type == 'Paciente')
                                                     <td>{{ $users->find($consult->profissional_id)->name }}</td>
                                                 @endif
-                                                <td>{{ $consult->date }}</td>
-                                                <td>{{ date('H:i', strtotime($consult->time)) }}</td>
+                                                <td>{{ date('d-m-Y', strtotime($consult->date)) }}</td>
+                                                <td>{{ date('H:i', strtotime($consult->date)) }}</td>
                                                 <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
                                                 <div class="D_P_P">
                                                     <td>
