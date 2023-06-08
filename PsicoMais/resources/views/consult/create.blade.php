@@ -65,34 +65,37 @@
                             </h3>
 
                             @if ($hasAvailableConsults)
-                                <div class="list2 flex justify-between text-center p-2 gap-4">
-                                    <table class="list2 dark:text-white p-2">
-                                        <thead>
-                                            <tr>
-                                                <th>Data</th>
-                                                <th>Início</th>
-                                                <th>Término</th>
-                                                <th>Ações</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                                <div class="c-conteiner">
+                                   
                                             @foreach ($sortedConsults as $consult)
                                                 @if (!$consult->paciente_id && $consult->profissional_id == auth()->user()->id)
-                                                    <tr>
-                                                        <td>{{ date('d-m-Y', strtotime($consult->date)) }}</td>
-                                                        <td>{{ date('H:i', strtotime($consult->date)) }}</td>
-                                                        <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
-                                                        <td>
+                                                <div class="card">
+                                                    <div class="c-body">
+                                                        <div class="consulta">
+                                                            <label class="label-consul">Data:</label>
+                                                            <div class="consulta-name">{{ date('d-m-Y', strtotime($consult->date)) }}</div>
+                                                        </div>
+                                                        <div class="consulta">
+                                                            <label class="label-consul">Início:</label>
+                                                            <div class="consulta-name">{{ date('H:i', strtotime($consult->date)) }}</div>
+                                                        </div>
+                                                        <div class="consulta">
+                                                            <label class="label-consul">Término:</label>
+                                                            <div class="consulta-name">{{ date('H:i', strtotime($consult->end_time)) }}</div>
+                                                        </div>
+                                                        <div class="consulta">
+                                                            <div class="consulta-botao">
                                                             <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">
                                                                 @csrf
                                                                 <x-primary-button type="submit" data-confirm="Tem certeza que deseja excluir?">Excluir</x-primary-button>
                                                             </form>
-                                                        </td>
-                                                    </tr>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 @endif
                                             @endforeach
-                                        </tbody>
-                                    </table>
+                                       
                                 </div>
                             @else
                             <div class="disp_horario">

@@ -1003,6 +1003,10 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
+.bg-white-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(112 193 232 / var(--tw-bg-opacity));
+}
 .bg-opacity-20 {
   --tw-bg-opacity: 0.2;
 }
@@ -1880,5 +1884,57 @@ select {
     align-items: center;
     float:right;
   }
+}
+/* Estilos dos cards das consultas*/
+.c-conteiner {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px 10px; 
+  align-content: start;
+  align-items: start;
+  width: 100%;
+  margin-bottom: 200px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+.card {
+   width: 250px;
+   background-color: #fff;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+   border-radius: 10px;
+   overflow: hidden;
+   margin-top: 10px;
+}
+
+.c-body {
+   padding-bottom: 10px;
+   padding-top: 10px;
+   padding-left: 20px;
+   padding-right: 20px;
+
+}
+.consulta {
+   display: flex;
+   align-items: center;
+   
+   
+}
+.consulta-name {
+   width: 100%;
+   font-size: 16px;
+   text-align: center;
+   margin-top: 10px;
+   background-color: #e8e8e8;
+   border-radius: 10px;
+}
+.consulta-botao {
+   width: 100%;
+   text-align: center;
+   margin-top: 15px;
+}
+.label-consul {
+   font-size: 16px;
+   margin-top: 10px;
 }
 
