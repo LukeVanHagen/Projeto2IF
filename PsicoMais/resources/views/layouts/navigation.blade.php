@@ -25,6 +25,9 @@
                             {{ __('Horários Disponíveis') }}
                         </x-nav-link>
                     @endif
+                    <x-nav-link :href="route('consult.history')" :active="request()->routeIs('consult.history')" class="w3-bar-item">
+                            {{ __('Histórico') }}
+                        </x-nav-link>
                 </div>
             </div>
 

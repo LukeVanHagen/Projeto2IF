@@ -19,7 +19,7 @@
                         $consults = $sortedConsults;
                     @endphp
                         @foreach ($consults as $consult)
-                        @if($consult->paciente_id == null)
+                        @if($consult->paciente_id == null && strtotime($consult->date) > time())
          <div class="card">
             <div class="c-body">
                <div class="consulta">

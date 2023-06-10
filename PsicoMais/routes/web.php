@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/consult/create', [ConsultController::class, 'createAvailability'])->name('consult.create');
 Route::get('/consult/list', [ConsultController::class, 'list'])->name('consult.list');
+Route::get('/consult/history', [ConsultController::class, 'history'])->name('consult.history');
 Route::post('/consult', [ConsultController::class, 'store'])->name('consult.store');
 Route::post('/consult/mark/{id}', [ConsultController::class, 'mark'])->name('consult.mark');
 Route::post('/consult/cancel/{id}', [ConsultController::class, 'cancel'])->name('consult.cancel');

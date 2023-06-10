@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>PSICOMAIS</title>
+        <title>PsicoMais</title>
         
         <!-- Fonts -->
         <link href="{{ asset('css/stylewelcome.css') }}" rel="stylesheet">

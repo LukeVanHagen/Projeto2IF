@@ -84,6 +84,15 @@ class ConsultController extends Controller
         $users = User::all();
         return view('consult.list', compact('sortedConsults', 'users'));
     }
+    public function history()
+    {
+        $consults = Consult::all();
+        $sortedConsults = $consults->sortBy(function ($consult) {
+            return $consult->date . ' ' . $consult->time;
+        });
+        $users = User::all();
+        return view('consult.history', compact('sortedConsults', 'users'));
+    }
 
     public function createAvailability()
     {
