@@ -29,10 +29,10 @@
                         @foreach ($consults as $consult)
                             @if (($consult->paciente_id == Auth::id() || $consult->profissional_id == Auth::id()) && strtotime($consult->date) < time() && $consult->paciente_id != null)
                             <tr>
-                                @if (consult->paciente_id == Auth::id())
-                                <td>{{ $users->find($consult->profissional_id)->name }}</td>
+                                @if ($consult->profissional_id == Auth::id())
+                                    <td>{{ $users->find($consult->paciente_id)->name }}</td>
                                 @else
-                                <td>{{ $users->find($consult->paciente_id)->name }}</td>
+                                    <td>{{ $users->find($consult->profissional_id)->name }}</td>
                                 @endif
                                 <td>{{ date('d-m-Y', strtotime($consult->date)) }}</td>
                                 <td>{{ date('H:i', strtotime($consult->date)) }}</td>
