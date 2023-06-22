@@ -1824,7 +1824,7 @@ select {
     
   }
 
-  .forms_create{
+  .forms_create {
 
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -1850,6 +1850,8 @@ select {
   background-color: #ebebec;
   
   }
+
+  
   .img{
     background-image:"images/psicomais.jpeg";
     max-width: 100%;

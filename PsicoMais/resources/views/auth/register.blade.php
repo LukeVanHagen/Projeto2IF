@@ -13,8 +13,10 @@
         <div class="mt-4">
             <x-input-label for="type" :value="__('Type')" />
             <select name="type" id="type" class="select w-full rounded-md shadow-sm border-gray-300 mt-1">
+                
                 <option>Profissional</option>
                 <option>Paciente</option>
+                
             </select>
         </div>
 
