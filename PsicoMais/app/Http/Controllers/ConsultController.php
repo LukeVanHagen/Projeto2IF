@@ -21,7 +21,7 @@ class ConsultController extends Controller
         ]);
     
         if ($validator->fails()) {
-            return redirect()->route('consult.create')->withErrors($validator)->withInput();
+            return redirect()->route('consult.display')->withErrors($validator)->withInput();
         }
     
         $validatedData = $validator->validated();
@@ -48,7 +48,7 @@ class ConsultController extends Controller
     
     
         if ($existingConsults->count() > 0) {
-            return redirect()->route('consult.create')->with('msg', 'Já existe uma consulta disponibilizada nesse horário.');
+            return redirect()->route('consult.display')->with('msg', 'Já existe uma consulta disponibilizada nesse horário.');
         }
     
         $consults = [];
@@ -70,7 +70,7 @@ class ConsultController extends Controller
     
         DB::table('consults')->insert($consults);
     
-        return redirect()->route('consult.create')->with('msg', 'Consultas criadas com sucesso!');
+        return redirect()->route('consult.display')->with('msg', 'Consultas criadas com sucesso!');
     }
     
     
@@ -94,7 +94,7 @@ class ConsultController extends Controller
         return view('consult.history', compact('sortedConsults', 'users'));
     }
 
-    public function createAvailability()
+    public function display()
     {
         if (Auth::user()->type == "Profissional") {
             $users = User::all();
@@ -102,8 +102,16 @@ class ConsultController extends Controller
             $sortedConsults = $consults->sortBy(function ($consult) {
                 return $consult->date . ' ' . $consult->time;
             });
-            $dataAtual = Carbon::now()->format('Y-m-d');
-            return view('consult.create', compact('sortedConsults', 'users','dataAtual'));
+            return view('consult.display', compact('sortedConsults', 'users'));
+        } else {
+            return redirect()->route('dashboard')->with('msg', 'Acesso Negado!');
+        }
+    }
+    public function create()
+    {
+        if (Auth::user()->type == "Profissional") {   
+            $dataAtual = Carbon::now()->format('Y-m-d');       
+            return view('consult.create', compact('dataAtual'));
         } else {
             return redirect()->route('dashboard')->with('msg', 'Acesso Negado!');
         }
@@ -140,6 +148,6 @@ class ConsultController extends Controller
 
         $consult->delete();
 
-        return redirect()->route('consult.create')->with('msg', 'Consulta excluída com sucesso!');
+        return redirect()->route('consult.display')->with('msg', 'Consulta excluída com sucesso!');
     }
 }

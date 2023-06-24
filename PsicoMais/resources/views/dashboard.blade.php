@@ -14,8 +14,9 @@
                         @endphp
 
                         @foreach ($sortedConsults as $consult)
-                            @if (($consult->paciente_id && $consult->profissional_id == auth()->user()->id && Auth::user()->type == 'Profissional') ||
-                                ($consult->paciente_id && $consult->paciente_id == auth()->user()->id && Auth::user()->type == 'Paciente'))
+                        @if ((($consult->paciente_id && $consult->profissional_id == auth()->user()->id && Auth::user()->type == 'Profissional') ||
+                                        ($consult->paciente_id && $consult->paciente_id == auth()->user()->id && Auth::user()->type == 'Paciente')) &&
+                                        strtotime($consult->date) > time())
                                 @php
                                     $hasConsults = true;
                                     break;
@@ -23,11 +24,11 @@
                             @endif
                         @endforeach
                     </div>
-                    @if ($hasConsults)
-                        <h3 class="list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+                    <h3 class="list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                             {{ __('Consultas Agendadas :') }}
-                        </h3>
-
+                    </h3>
+                    
+                    @if ($hasConsults)
                         <div class="list2 flex justify-between text-center p=2 gap-4">
                             <table class="list2 dark:text-white p-2">
                                 <thead>
@@ -46,48 +47,41 @@
 
                                 <tbody>
                             @foreach ($sortedConsults as $consult)
-                                @if ((($consult->paciente_id && $consult->profissional_id == auth()->user()->id && Auth::user()->type == 'Profissional') ||
-                                    ($consult->paciente_id && $consult->paciente_id == auth()->user()->id && Auth::user()->type == 'Paciente')) &&
-                                    strtotime($consult->date) > time())
-                                    <tr>
-                                        @if(Auth::user()->type == 'Profissional')
-                                        <td>{{ $users->find($consult->paciente_id)->name}}</td>
-                                        @elseif(Auth::user()->type == 'Paciente')
-                                        <td>{{ $users->find($consult->profissional_id)->name }}</td>
-                                        @endif
-                                        <td>{{ date('d-m-Y', strtotime($consult->date)) }}</td>
-                                        <td>{{ date('H:i', strtotime($consult->date)) }}</td>
-                                        <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
-                                        <td>
-                                            <form action="{{ route('consult.cancel', $consult->id) }}" method="POST">
-                                                        @csrf
-                                                        <x-primary-button class="btt-3" type="submit" data-confirm="Tem certeza que deseja desmarcar?">Desmarcar</x-primary-button>
-                                            </form>
-                                        </td>
-                                        @if(Auth::user()->type == 'Profissional')
-                                        <td>
-                                            <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">
+                                    @if ((($consult->paciente_id && $consult->profissional_id == auth()->user()->id && Auth::user()->type == 'Profissional') ||
+                                        ($consult->paciente_id && $consult->paciente_id == auth()->user()->id && Auth::user()->type == 'Paciente')) &&
+                                        strtotime($consult->date) > time())
+                                        <tr>
+                                            @if(Auth::user()->type == 'Profissional')
+                                                <td>{{ $users->find($consult->paciente_id)->name}}</td>
+                                            @elseif(Auth::user()->type == 'Paciente')
+                                                <td>{{ $users->find($consult->profissional_id)->name }}</td>
+                                            @endif
+                                            <td>{{ date('d-m-Y', strtotime($consult->date)) }}</td>
+                                            <td>{{ date('H:i', strtotime($consult->date)) }}</td>
+                                            <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
+                                            <td>
+                                                <form action="{{ route('consult.cancel', $consult->id) }}" method="POST">
                                                             @csrf
-                                                            <x-primary-button class="btt-3" type="submit" data-confirm="Tem certeza que deseja excluir?">Excluir</x-primary-button>
-                                            </form>
-                                        </td>
-                                        @endif
-                                    </tr>
-                                 @endif
+                                                            <x-primary-button class="btt-3" type="submit" data-confirm="Tem certeza que deseja desmarcar?">Desmarcar</x-primary-button>
+                                                </form>
+                                            </td>
+                                            @if(Auth::user()->type == 'Profissional')
+                                            <td>
+                                                <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">
+                                                                @csrf
+                                                                <x-primary-button class="btt-3" type="submit" data-confirm="Tem certeza que deseja excluir?">Excluir</x-primary-button>
+                                                </form>
+                                            </td>
+                                            @endif
+                                        </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
 
                     @else
-                        <div class="disp_horario">
-                            <h3 class="list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-                                {{ __('Consultas Agendadas :') }}
-                            </h3>
-                            <div class="disp_horario">
-                                <p class="list1"> Não há consultas agendadas.</p>
-                            </div>
-                        </div>
+                        <p class="list1"> Não há consultas agendadas.</p>
                     @endif
                 </div>
             </div>
