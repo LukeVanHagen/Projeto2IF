@@ -23,23 +23,25 @@
             {{ __('Marcar Consulta') }} 
         </h3>
 
-        <div>
-            <div>
+        <div class="filter-consul">
+          <div class="esq-div bg-white sm:max-w-md mt-6 px-6 py-4 sm:rounded-lg shadow-md">
+            <div class="B_D_P">
                 <label for="start_date">Data de Início:</label>
-                <input type="date" x-model="startDate" id="start_date">
+                <input class="select" type="date" x-model="startDate" id="start_date">
             </div>
-            <div>
+            <div class="B_D_P">
                 <label for="end_date">Data Final:</label>
-                <input type="date" x-model="endDate" id="end_date">
+                <input class="select" type="date" x-model="endDate" id="end_date">
             </div>
             <div>
-                <button @click="filterConsults">Filtrar</button>
-            </div>
+                <x-primary-button @click="filterConsults">Filtrar</x-primary-button>
+            </div> 
+          </div>
         </div>
 
         @if ($hasConsults)  
-            <div class="list2 flex justify-between text-center p-2 gap-4">
-                <table class="list2 dark:text-white p-2">
+            <div class="consul-contei">
+                <table>
                     <thead>
                         <tr>
                             <th>Profissional</th>
@@ -52,7 +54,7 @@
                     <tbody>
                         @foreach ($sortedConsults as $consult)
                             @if($consult->paciente_id == null && strtotime($consult->date) > time())
-                                <tr class="consult-row" data-date="{{ date('Y-m-d', strtotime($consult->date)) }}" >
+                                <tr data-date="{{ date('Y-m-d', strtotime($consult->date)) }}" >
                                     <td>{{ $users->find($consult->profissional_id)->name }}</td>
                                     <td>{{ date('d-m-Y', strtotime($consult->date)) }}</td>
                                     <td>{{ date('H:i', strtotime($consult->date)) }}</td>

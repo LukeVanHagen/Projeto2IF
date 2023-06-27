@@ -1887,56 +1887,59 @@ select {
     float:right;
   }
 }
-/* Estilos dos cards das consultas*/
-.c-conteiner {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 10px 10px; 
-  align-content: start;
-  align-items: start;
+ /* Estilos das tabelas*/
+
+ .consul-contei {
+  max-width: calc(100% - 2em);
+  margin: 1em auto;
+  width: 1200px;
+  
+ }
+
+ table {
+  border-collapse: collapse;
   width: 100%;
-  margin-bottom: 200px;
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-top: 20px;
-}
-.card {
-   width: 250px;
-   background-color: #fff;
-   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-   border-radius: 10px;
-   overflow: hidden;
-   margin-top: 10px;
-}
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+ }
 
-.c-body {
-   padding-bottom: 10px;
-   padding-top: 10px;
-   padding-left: 20px;
-   padding-right: 20px;
+ th,
+ td {
+  padding: 15px;
+  background-color: rgba(190, 194, 196, 0.659);
+  color: #0f0e0e;
+  text-align: center;
+  
+ }
 
-}
-.consulta {
-   display: flex;
-   align-items: center;
-   
-   
-}
-.consulta-name {
-   width: 100%;
-   font-size: 16px;
-   text-align: center;
-   margin-top: 10px;
-   background-color: #e8e8e8;
-   border-radius: 10px;
-}
-.consulta-botao {
-   width: 100%;
-   text-align: center;
-   margin-top: 15px;
-}
-.label-consul {
-   font-size: 16px;
-   margin-top: 10px;
-}
+ thead, th{
+    background-color: #86bff4;
+    font-size: 20px;
+ }
 
+ /* Divs do filtro e do add consulta*/
+
+ .filter-consul {
+  text-align: center;
+  margin: 1em auto;
+  width: 1200px;
+  max-width: calc(100% - 2em);
+ }
+
+ .dir-div {
+  display: inline;
+  max-width: 150px;
+  text-align: right;
+  border-radius: 10px;
+  margin: 15px;
+ }
+
+ .esq-div {
+  display: table;
+  text-align: right;
+  padding: 30px;
+  border-radius: 10px;
+  margin: 15px;
+  vertical-align: top;
+ }

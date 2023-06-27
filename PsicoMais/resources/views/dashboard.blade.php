@@ -29,8 +29,8 @@
                     </h3>
                     
                     @if ($hasConsults)
-                        <div class="list2 flex justify-between text-center p=2 gap-4">
-                            <table class="list2 dark:text-white p-2">
+                        <div class="consul-contei">
+                            <table>
                                 <thead>
                                     <tr>
                                         @if(Auth::check() && Auth::user()->type == 'Profissional')

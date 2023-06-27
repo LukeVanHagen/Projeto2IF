@@ -21,40 +21,41 @@
             {{ __('Consultas Disponibilizadas :') }}
         </h3>
 
-        <div>
-            <div>
-                <label for="start_date">Data de Início:</label>
-                <input type="date" x-model="startDate" id="start_date">
+        <div class="filter-consul">
+            <div class="esq-div bg-white sm:max-w-md mt-6 px-6 py-4 sm:rounded-lg shadow-md">
+                <div class="B_D_P">
+                  <label for="start_date">Data de Início:</label>
+                  <input class="select pt-3" type="date" x-model="startDate" id="start_date">
+                </div>
+                <div class="B_D_P">
+                  <label for="end_date">Data Final:</label>
+                  <input class="select" type="date" x-model="endDate" id="end_date">
+                </div>
+                <x-primary-button @click="filterConsults">Filtrar</x-primary-button>
             </div>
-            <div>
-                <label for="end_date">Data Final:</label>
-                <input type="date" x-model="endDate" id="end_date">
-            </div>
-            <div>
-                <button @click="filterConsults">Filtrar</button>
+            <div class="dir-div">
+                <form action="{{ route('consult.create' ) }}" method="POST">
+                    @csrf
+                    <button type="submit"><img src="{{ asset('images/icon_add.png')}}" width="50px" height="50px"></button>
+                </form>
             </div>
         </div>
 
         @if ($hasAvailableConsults)
-            <div class="list2 flex justify-between text-center p-2 gap-4">
-                <table class="list2 dark:text-white p-2">
+            <div class="consul-contei">
+                <table>
                     <thead>
                         <tr>
                             <th>Data</th>
                             <th>Início</th>
                             <th>Término</th>
                             <th>Ações</th>
-                            <th>
-                                <form action="{{ route('consult.create' ) }}" method="POST">
-                                    @csrf
-                                    <x-primary-button type="submit">+</x-primary-button>
-                                </form>
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
+                    
                         @foreach ($sortedConsults as $consult)
-                            <tr class="consult-row" data-date="{{ date('Y-m-d', strtotime($consult->date)) }}">
+                            <tr data-date="{{ date('Y-m-d', strtotime($consult->date)) }}">
                                 <td>{{ date('d-m-Y', strtotime($consult->date)) }}</td>
                                 <td>{{ date('H:i', strtotime($consult->date)) }}</td>
                                 <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>

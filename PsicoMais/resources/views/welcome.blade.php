@@ -37,7 +37,7 @@
                     <a href="{{ url('/dashboard') }}" class="w3-bar-item  text-sm">Dashboard</a>
                     @else
                     <button class="btt-1">
-                    <a href="{{ route('login') }}" class=" w3-bar-item font-semibold">Login</a>
+                    <a href="{{ route('login') }}" class=" w3-bar-item font-semibold">Entrar</a>
                   </button> 
                    @if (Route::has('register'))
                    <button class="btt-2">
