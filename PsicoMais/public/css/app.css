@@ -1943,3 +1943,21 @@ select {
   margin: 15px;
   vertical-align: top;
  }
+ .center{
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  max-width: 4000px;
+  padding: 20px;
+  padding-top: 0.1rem;
+  padding-right: 0.75rem;
+  padding-bottom: 0.5rem;
+  padding-left: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-radius: 5px;
+ }

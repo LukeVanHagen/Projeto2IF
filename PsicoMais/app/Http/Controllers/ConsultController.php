@@ -78,11 +78,12 @@ class ConsultController extends Controller
     public function list()
     {
         $consults = Consult::all();
+        $dataAtual = Carbon::now()->format('Y-m-d');
         $sortedConsults = $consults->sortBy(function ($consult) {
             return $consult->date . ' ' . $consult->time;
         });
         $users = User::all();
-        return view('consult.list', compact('sortedConsults', 'users'));
+        return view('consult.list', compact('sortedConsults', 'users','dataAtual'));
     }
     public function history()
     {
@@ -99,10 +100,12 @@ class ConsultController extends Controller
         if (Auth::user()->type == "Profissional") {
             $users = User::all();
             $consults = Consult::all();
+            $dataAtual = Carbon::now()->format('d-m-Y');  
             $sortedConsults = $consults->sortBy(function ($consult) {
                 return $consult->date . ' ' . $consult->time;
             });
-            return view('consult.display', compact('sortedConsults', 'users'));
+
+            return view('consult.display', compact('sortedConsults', 'users','dataAtual'));
         } else {
             return redirect()->route('dashboard')->with('msg', 'Acesso Negado!');
         }
