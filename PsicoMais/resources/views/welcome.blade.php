@@ -26,7 +26,7 @@
         <div class="relative flex items-top justify-center min-h-screen bg-white-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
           <!--Navbar com login e registro -->
         <div class="w3-top ">
-                <div class="w3-bar w3-white  w3-padding w3-card">
+                <div class="w3-bar w3-blue  w3-padding w3-card">
 
                   <a href="#" class="w3-bar-item ">
                   <b class="text-lg font-semibold">Psico+</b>
@@ -60,18 +60,20 @@
                         <img src="{{ asset('images/psicomais.jpeg') }}" alt="Minha imagem">  
                     </div> 
                  </div>
-                 <!--Div com o titulo bem vindos-->
+                 <!--Div com o titulo bem vindo-->
                     <div class="absolute-1-div">   
                       <h1 class="titulo text-1">Bem Vindos ao Psico+</h1>
+                      <p class="subtitulo">O PsicoMais é um site que oferece um sistema de agendamento de consultas com profissionais de psicologia. Ele foi desenvolvido com o propósito de facilitar o acesso dos usuários a serviços de saúde mental, conectando-os a psicólogos qualificados e experientes. </p>
                     </div>
+                    
                  <!--Fim da div com o titulo-->
               <!--Div com o botão leia mais ou história-->
                 <div class="absolute-2-div">   
-                   <button id="btnHistoria" class="font-semibold " onclick="toggleHistoria()">História ></button>
+                   <button id="btnHistoria" class="font-semibold " onclick="toggleHistoria()">Leia Mais ></button>
                 </div>
               <!--Fim da div do botão hitoria-->
 <!--Div com a historia ou informações-->
-                  <div id="textoHistoria" style="display:none" class="absolute-0-div font-semibold text-gray-200" >Era uma vez um lindo passaro azul,que morava numa linda bola azul,que flutuava pelo espaco,com muitas florestas e muitos bixos</div>
+                  <div id="textoHistoria" style="display:none" class="absolute-0-div font-semibold text-gray-200" >Através do site, os usuários podem encontrar uma variedade de profissionais de psicologia, e marcar o horário de dispolinibidade para ambos. </div>
                 </div>
               </div>
             </div>
