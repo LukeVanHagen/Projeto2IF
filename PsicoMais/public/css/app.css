@@ -1920,7 +1920,12 @@ select {
 
  /* Divs do filtro e do add consulta*/
 
+ 
  .filter-consul {
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   margin: 1em auto;
   width: 1200px;
@@ -1960,4 +1965,10 @@ select {
   font-size: 1rem;
   line-height: 1.5rem;
   border-radius: 5px;
+ }
+
+ .center1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
  }

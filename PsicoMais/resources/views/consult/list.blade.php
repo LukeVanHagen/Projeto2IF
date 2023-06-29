@@ -38,7 +38,7 @@
                     <label for="end_date">Fim:</label>
                     <input class="select" type="date" x-model="endDate" id="end_date" required>
                 </div>
-                <div>
+                <div class="center1">
                     <x-primary-button @click="filterConsults">Filtrar</x-primary-button>
                 </div> 
             </div>

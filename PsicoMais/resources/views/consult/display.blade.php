@@ -36,8 +36,8 @@
                 <label for="end_date">Fim:</label>
                 <input class="select" type="date" x-model="endDate" id="end_date" required>
             </div>
-            <div>
-                <x-primary-button @click="filterConsults">Filtrar</x-primary-button>
+            <div class="center1">
+                <x-primary-button @click="filterConsults" >Filtrar</x-primary-button>
             </div> 
           </div>
           <div class="dir-div">
@@ -49,7 +49,7 @@
         </div>
         </div>
             <div class="consul-contei">
-                <table>
+                <table class="consul-contei:nth-child(even)">
                     <thead>
                         <tr>
                             <th>Data</th>
@@ -61,7 +61,7 @@
                     <tbody>
                     
                         @foreach ($sortedConsults as $consult)
-                            <tr class="consult-row" data-date="{{ date('Y-m-d', strtotime($consult->date)) }}">
+                            <tr class="" data-date="{{ date('Y-m-d', strtotime($consult->date)) }}">
                                 <td>{{ date('d-m-Y', strtotime($consult->date)) }}</td>
                                 <td>{{ date('H:i', strtotime($consult->date)) }}</td>
                                 <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
