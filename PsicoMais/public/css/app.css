@@ -1973,6 +1973,8 @@ select {
   align-items: center;
  }
 
+ /*Divs de alerta de sucesso e erro - dashboard e display*/
+
  .msg.verde{
   color: green;
 

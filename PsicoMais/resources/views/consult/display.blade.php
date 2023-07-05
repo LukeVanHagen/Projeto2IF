@@ -1,11 +1,11 @@
 <x-app-layout>
     <div class="disp_horario" x-data="filterConsults()">
         <div class="list1">
-        @if(session('msg'))
-            <div class="{{ session('class') }}">
-                {{ session('msg') }}
-            </div>
-        @endif
+            @if(session('msg'))
+                <div class="{{ session('class') }}" x-init="hideDivsAfterDelay">
+                    {{ session('msg') }}
+                </div>
+            @endif
         </div>
         @php
             $hasAvailableConsults = false;

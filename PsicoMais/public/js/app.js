@@ -23856,3 +23856,22 @@ Alpine.data('filterConsults', () => ({
 document.addEventListener('DOMContentLoaded', () => {
   Alpine.start();
 });
+
+function hideDivsAfterDelay() {
+  const divs = document.querySelectorAll('.msg');
+  
+  const hideDiv = (div) => {
+    div.style.display = 'none';
+  };
+  
+  divs.forEach((div) => {
+    setTimeout(() => {
+      hideDiv(div);
+    }, 5000);
+  });
+}
+
+document.addEventListener('alpine:init', () => {
+  Alpine.start();
+  hideDivsAfterDelay();
+});

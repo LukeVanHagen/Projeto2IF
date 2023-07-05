@@ -6,7 +6,9 @@
                     <div class="list1">
                     
                         @if(session('msg'))
-                            {{ session('msg') }}
+                            <div class="{{ session('class') }}" x-init="hideDivsAfterDelay">
+                                {{ session('msg') }}
+                            </div>
                         @endif
 
                         @php
@@ -14,7 +16,7 @@
                         @endphp
 
                         @foreach ($sortedConsults as $consult)
-                        @if ((($consult->paciente_id && $consult->profissional_id == auth()->user()->id && Auth::user()->type == 'Profissional') ||
+                            @if ((($consult->paciente_id && $consult->profissional_id == auth()->user()->id && Auth::user()->type == 'Profissional') ||
                                         ($consult->paciente_id && $consult->paciente_id == auth()->user()->id && Auth::user()->type == 'Paciente')) &&
                                         strtotime($consult->date) > time())
                                 @php
