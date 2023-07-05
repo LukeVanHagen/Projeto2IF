@@ -48,7 +48,10 @@ class ConsultController extends Controller
     
     
         if ($existingConsults->count() > 0) {
-            return redirect()->route('consult.display')->with('msg', 'Já existe uma consulta disponibilizada nesse horário.');
+            return redirect()->route('consult.display')->with([
+                'msg' => 'Já existe uma consulta disponibilizada nesse horário.',
+                'class' => 'msg vermelho'
+            ]);
         }
     
         $consults = [];
@@ -70,7 +73,10 @@ class ConsultController extends Controller
     
         DB::table('consults')->insert($consults);
     
-        return redirect()->route('consult.display')->with('msg', 'Consultas criadas com sucesso!');
+        return redirect()->route('consult.display')->with([
+            'msg' => 'Consultas criadas com sucesso!',
+            'class' => 'msg verde'
+        ]);
     }
     
     
@@ -107,7 +113,10 @@ class ConsultController extends Controller
 
             return view('consult.display', compact('sortedConsults', 'users','dataAtual'));
         } else {
-            return redirect()->route('dashboard')->with('msg', 'Acesso Negado!');
+            return redirect()->route('dashboard')->with([
+                'msg' => 'Acesso negado!',
+                'class' => 'msg vermelho'
+            ]);
         }
     }
     public function create()
@@ -116,7 +125,10 @@ class ConsultController extends Controller
             $dataAtual = Carbon::now()->format('Y-m-d');       
             return view('consult.create', compact('dataAtual'));
         } else {
-            return redirect()->route('dashboard')->with('msg', 'Acesso Negado!');
+            return redirect()->route('dashboard')->with([
+                'msg' => 'Acesso negado!',
+                'class' => 'msg vermelho'
+            ]);
         }
     }
     public function mark(Request $request, $id)
@@ -127,7 +139,10 @@ class ConsultController extends Controller
         $consult->paciente_id = $userId;
         $consult->save();
 
-        return redirect()->route('dashboard')->with('msg', 'Consulta marcada com sucesso!');
+        return redirect()->route('dashboard')->with([
+            'msg' => 'Consulta marcada com sucesso!',
+            'class' => 'msg verde'
+        ]);
 
     }
     public function cancel(Request $request, $id)
@@ -138,7 +153,10 @@ class ConsultController extends Controller
         $consult->paciente_id = null;
         $consult->save();
 
-        return redirect()->route('dashboard')->with('msg', 'Consulta desmarcada com sucesso!');
+        return redirect()->route('dashboard')->with([
+            'msg' => 'Consulta desmarcada com sucesso!',
+            'class' => 'msg verde'
+        ]);
 
     }
     public function destroy($id)
@@ -146,11 +164,17 @@ class ConsultController extends Controller
         $consult = Consult::find($id);
 
         if (!$consult) {
-            return redirect()->route('dashboard')->with('msg', 'Consulta não encontrada');
+            return redirect()->route('dashboard')->with([
+                'msg' => 'Consulta não encontrada',
+                'class' => 'msg vermelho'
+            ]);
         }
 
         $consult->delete();
 
-        return redirect()->route('consult.display')->with('msg', 'Consulta excluída com sucesso!');
+        return redirect()->route('consult.display')->with([
+            'msg' => 'Consulta excluida com sucesso!',
+            'class' => 'msg verde'
+        ]);
     }
 }

@@ -1972,3 +1972,11 @@ select {
   justify-content: center;
   align-items: center;
  }
+
+ .msg.verde{
+  color: green;
+
+ }
+ .msg.vermelho{
+  color: red;
+ }
