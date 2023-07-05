@@ -23832,28 +23832,27 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function filterConsults() {
-    const startDate = document.getElementById('start_date').value;
-    const endDate = document.getElementById('end_date').value;
+  const startDate = new Date(document.getElementById('start_date').value);
+  const endDate = new Date(document.getElementById('end_date').value);
 
-    const consults = document.querySelectorAll('.consult-row');
+  const consults = document.querySelectorAll('.consult-row');
 
-    consults.forEach(consult => {
-        const consultDate = consult.getAttribute('data-date');
+  consults.forEach(consult => {
+    const consultDate = new Date(consult.getAttribute('data-date'));
 
-        if (consultDate >= startDate && consultDate <= endDate) {
-            consult.style.display = 'table-row';
-        } else {
-            consult.style.display = 'none';
-        }
-    });
+    if (consultDate >= startDate && consultDate <= endDate) {
+      consult.style.display = 'table-row';
+    } else {
+      consult.style.display = 'none';
+    }
+  });
 }
 
 Alpine.data('filterConsults', () => ({
-    startDate: '',
-    endDate: '',
-    filterConsults,
+  startDate: '',
+  endDate: '',
 }));
 
 document.addEventListener('DOMContentLoaded', () => {
-    Alpine.start();
+  Alpine.start();
 });

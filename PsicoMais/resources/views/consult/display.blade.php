@@ -61,7 +61,7 @@
                     <tbody>
                     
                         @foreach ($sortedConsults as $consult)
-                            <tr class="" data-date="{{ date('Y-m-d', strtotime($consult->date)) }}">
+                            <tr class="consult-row" data-date="{{ date('Y-m-d', strtotime($consult->date)) }}">
                                 <td>{{ date('d-m-Y', strtotime($consult->date)) }}</td>
                                 <td>{{ date('H:i', strtotime($consult->date)) }}</td>
                                 <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
