@@ -63,17 +63,19 @@
                     <tbody>
                     
                         @foreach ($sortedConsults as $consult)
-                            <tr class="consult-row" data-date="{{ date('Y-m-d', strtotime($consult->date)) }}">
-                                <td>{{ date('d-m-Y', strtotime($consult->date)) }}</td>
-                                <td>{{ date('H:i', strtotime($consult->date)) }}</td>
-                                <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
-                                <td> 
-                                    <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">
-                                        @csrf
-                                        <x-primary-button type="submit" data-confirm="Tem certeza que deseja excluir?">Excluir</x-primary-button>
-                                    </form>
-                                </td>
-                            </tr>
+                            @if (!$consult->paciente_id && $consult->profissional_id == auth()->user()->id)
+                                <tr class="consult-row" data-date="{{ date('Y-m-d', strtotime($consult->date)) }}">
+                                    <td>{{ date('d-m-Y', strtotime($consult->date)) }}</td>
+                                    <td>{{ date('H:i', strtotime($consult->date)) }}</td>
+                                    <td>{{ date('H:i', strtotime($consult->end_time)) }}</td>
+                                    <td> 
+                                        <form action="{{ route('consult.destroy', $consult->id) }}" method="POST">
+                                            @csrf
+                                            <x-primary-button type="submit" data-confirm="Tem certeza que deseja excluir?">Excluir</x-primary-button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endif
                         @endforeach
                     </tbody>
                 </table>
