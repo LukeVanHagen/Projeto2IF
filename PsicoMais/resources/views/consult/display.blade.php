@@ -26,7 +26,7 @@
 
         @if ($hasAvailableConsults)
         <div class="filter-consul">
-          <div class="esq-div bg-white sm:max-w-md mt-6 px-6 py-4 sm:rounded-lg shadow-md">
+          <div class="esq-div  sm:max-w-md mt-6 px-6 py-4 sm:rounded-lg ">
             <h5 class="list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                 {{ __('Filtros') }} 
             </h5>
@@ -41,13 +41,14 @@
             <div class="center1">
                 <x-primary-button @click="filterConsults" >Filtrar</x-primary-button>
             </div> 
-          </div>
-          <div class="dir-div">
+            <div class="dir-div">
                 <form action="{{ route('consult.create' ) }}" method="POST">
                     @csrf
                     <button type="submit"><img src="{{ asset('images/icon_add.png')}}" width="50px" height="50px"></button>
                 </form>
             </div>
+          </div>
+          
         </div>
         </div>
             <div class="consul-contei">

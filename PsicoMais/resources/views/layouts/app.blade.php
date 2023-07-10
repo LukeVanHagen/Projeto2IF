@@ -14,7 +14,7 @@
         <script src="../js/app.js"></script>
 
         <link rel="stylesheet" type="text/css" href="../css/app.css" />
-        
+        <link rel="stylesheet" type="text/css" href="../css/logopm.css"/>
     </head>
     <body>
 

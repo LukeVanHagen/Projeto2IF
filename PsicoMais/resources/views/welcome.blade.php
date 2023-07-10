@@ -34,7 +34,9 @@
                 <div class="w3-bar w3-blue  w3-padding w3-card">
 
                   <a href="#" class="w3-bar-item ">
-                  <b class="text-lg font-semibold">Psico+</b>
+                  <b class="text-lg font-semibold">
+                  <img class="imglogo" src="{{ asset('images/PsicoMaisLogo.svg') }}"/>
+                  </b>
                   </a>
                   @if (Route::has('login'))
                   <div class="w3-right w3-hide-small">
@@ -61,22 +63,25 @@
            
 <!--Div com o contéudo-->
            <section class="c-section">
-            <h2 class="c-section__title"><span>PsicoMais+</span></h2>
+            <h2 class="c-section__title">
+              <span>PsicoMais+</span>
+            </h2>
             <ul class="c-services">
+            <img class="imagem" src="{{ asset('images/Img_come.svg') }}" />
             <li class="c-services__item">
                <h3>Profissional</h3>
-               <p>Criação de consultas de acordo com
+               <p>Disponibilize consultas de acordo com
                 seu horário disponivel.</p>
              </li>
               <li class="c-services__item">
                 <h3>Cliente</h3>
-                <p>Marcação de consultas disponibilizadas
-                  pelo profissional.
+                <p>Marque consultas disponibilizadas
+                  pelo profissional de sua escolha.
                 </p>
               </li>
               <li class="c-services__item">
-                <h3>Colaboradores</h3>
-                <p>->nomes</p>
+                <h3>GitHub</h3>
+                <p><a href="https://github.com/LukeVanHagen/Projeto2IF">Projeto PsicoMais, desenvolvido para matéria de projeto e desenvolvimento.</a></p>
               </li>
             </ul>
            </section>

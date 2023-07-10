@@ -1796,7 +1796,6 @@ select {
   .btt-3{
   
     border-radius: 99px;
-    border: 2px solid #bed6e8;
     width: auto;
     height: 100%;
     animation: glowing-button-85 20s linear infinite;
@@ -1805,6 +1804,12 @@ select {
     
 
   }
+
+  .btt-4 {
+    border-radius: 99px;
+    background-color: salmon;
+  }
+
   .logo{
     max-width: 50%;
     width: 5%;
@@ -1816,12 +1821,7 @@ select {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
-    
-
-   
-
-    
+    padding: 10px; 
   }
 
   .forms_create {
@@ -1864,7 +1864,7 @@ select {
   .loggout{
     display: flex;
     align-items: center;
-    margin-left: 1340px;
+    margin-left: 1020px;
     color:#1f2937;
     
   }
@@ -1922,31 +1922,29 @@ select {
 
  
  .filter-consul {
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
+  display: block;
+  height: 100px;
   align-items: center;
-  text-align: center;
   margin: 1em auto;
-  width: 1200px;
-  max-width: calc(100% - 2em);
+  width: 1300px;
  }
 
  .dir-div {
   display: inline;
-  max-width: 150px;
+  max-width: 550px;
   text-align: right;
   border-radius: 10px;
-  margin: 15px;
+  margin: 1px;
  }
 
  .esq-div {
-  display: table;
+  display: flex;
   text-align: right;
   padding: 30px;
   border-radius: 10px;
   margin: 15px;
   vertical-align: top;
+  align-items: center;
  }
  .center{
   -webkit-appearance: none;

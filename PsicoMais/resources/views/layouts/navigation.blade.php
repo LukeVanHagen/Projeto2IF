@@ -6,7 +6,9 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}"> 
-                        <button class="w3-bar-item">Psico+</button>
+                        <button class="w3-bar-item">
+                        <img class="imglogo" src="{{ asset('images/PsicoMaisLogo.svg') }}"/>
+                        </button>
                     </a>
                 </div>
 

@@ -26,7 +26,7 @@
 
         @if ($hasConsults)  
             <div class="filter-consul">
-            <div class="esq-div bg-white sm:max-w-md mt-6 px-6 py-4 sm:rounded-lg shadow-md">
+            <div class="esq-div  sm:max-w-md mt-6 px-6 py-4 sm:rounded-lg ">
                 <h5 class="list1 font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
                     {{ __('Filtros') }} 
                 </h5>
